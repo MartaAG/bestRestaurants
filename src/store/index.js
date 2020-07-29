@@ -28,9 +28,34 @@ export default new Vuex.Store({
   },
   { id:5,
     name: "dunama",
-    rating:5,
+    rating:4.3,
     cuisine:"french"
- }
+ },
+ { id:6,
+   name: "omamo",
+   rating:4.0,
+   cuisine:"korean"
+},
+  { id:7,
+    name: "hfras",
+    rating:3.9,
+    cuisine:"polish"
+  },
+  { id:8,
+    name: "gfsdaa",
+    rating:3.5,
+    cuisine:"french"
+  },
+  { id:9,
+    name: "eryqo",
+    rating:3.0,
+    cuisine:"taiwanese"
+  },
+  { id:10,
+    name: "nuthing",
+    rating:2.0,
+    cuisine:"english"
+  }
    ]
   },
   mutations: {},
