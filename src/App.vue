@@ -16,22 +16,13 @@
       <v-main>
         <v-container
           class="fill-height"
-          fluid
-        >
-          <v-row
-            align="center"
-            justify="center"
           >
-            <v-col class="text-center">
-              <List>
-
-              </List>
-              <v-tooltip left>
-              
-                <span>Source</span>
-              </v-tooltip>
+          <v-row>
+            <v-col cols="12">
+              <List />
             </v-col>
           </v-row>
+
         </v-container>
       </v-main>
       <v-footer
