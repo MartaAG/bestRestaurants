@@ -19,7 +19,7 @@
           >
           <v-row>
             <v-col cols="12">
-              <List />
+              <router-view></router-view>
             </v-col>
           </v-row>
 
@@ -37,14 +37,9 @@
 </template>
 
 <script>
-import List from "./components/List";
 
 export default {
   name: "App",
-
-  components: {
-    List
-  },
 
   data: () => ({
     //

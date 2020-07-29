@@ -42,7 +42,7 @@
 
       </v-card-text>
       <v-card-actions>
-        <v-btn color="deep-purple lighten-2" text>
+        <v-btn color="deep-purple lighten-2" text to="/about">
           Details
         </v-btn>
       </v-card-actions>
