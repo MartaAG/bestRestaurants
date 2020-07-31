@@ -29,7 +29,7 @@
         color="indigo"
         app
       >
-        <span class="white--text">&copy; {{ new Date().getFullYear() }}</span>
+        <span>2020</span>
       </v-footer>
     </v-app>
   </v-app>
@@ -37,7 +37,6 @@
 </template>
 
 <script>
-
 export default {
   name: "App",
 

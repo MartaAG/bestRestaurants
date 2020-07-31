@@ -57,10 +57,17 @@
 
 <script>
 import {
-  mapGetters
+  mapGetters,
+  mapActions
 } from 'vuex'
 export default {
   name: 'List',
-  computed: mapGetters(['allRestaurants'])
+  methods: {
+    ...mapActions(['fetchRestaurants'])
+  },
+  computed: mapGetters(['allRestaurants']),
+  created() {
+    this.fetchRestaurants()
+  }
 }
 </script>
