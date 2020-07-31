@@ -8,17 +8,19 @@ export default new Vuex.Store({
   state: {
     restaurants: []
   },
-  mutations: {},
+  mutations: {
+    setRestaurants: (state, restaurants) => (state.restaurants = restaurants)
+  },
   actions: {
-    async fetchRestaurants() {
-      const response = await axios.get("/search", {
+    async fetchRestaurants({commit}) {
+      const response = await axios.get("/search",
+       {params: {
         entity_id:263,
-        entity_type: "city",
-        sort:"rating",
-        order: "desc"
-      });
+        entity_type:"city",
+        sort:"rating"
+      }});
 
-      console.log(response.data)
+      commit('setRestaurants',response.data.restaurants)
     }
   },
   getters: {
