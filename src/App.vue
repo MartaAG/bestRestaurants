@@ -6,7 +6,7 @@
 
       <v-app-bar
         app
-        color="indigo"
+        color="brown darken-4"
         dark
       >
 
@@ -26,8 +26,9 @@
         </v-container>
       </v-main>
       <v-footer
-        color="indigo"
+        color="brown darken-4"
         app
+        dark
       >
         <span>2020</span>
       </v-footer>

@@ -14,8 +14,14 @@
     :key="location.restaurant.id">
 
       <v-img
+      v-if="location.restaurant.featured_image != '' "
       height="250"
       :src="location.restaurant.featured_image"></v-img>
+
+      <v-img
+      v-else
+      height="250"
+      src="https://cdn.vuetifyjs.com/images/cards/cooking.png"></v-img>
 
 
       <v-card-title>{{location.restaurant.name}}
@@ -42,7 +48,7 @@
 
       </v-card-text>
       <v-card-actions>
-        <v-btn color="deep-purple lighten-2" text
+        <v-btn color="brown darken-3" text
         :to="{name: 'About', params:{id: location.restaurant.id}}" >
           Details
         </v-btn>
