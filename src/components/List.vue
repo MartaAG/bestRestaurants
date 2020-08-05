@@ -9,7 +9,7 @@
 
     <v-card
     class="mx-auto my-12"
-    max-width="374"
+    max-width="320"
     v-for="location in allRestaurants"
     :key="location.restaurant.id">
 
