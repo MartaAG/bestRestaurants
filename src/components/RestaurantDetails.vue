@@ -1,17 +1,24 @@
 <template>
-  <div>
-    <h2>{{restaurant.name}}</h2>
-    <h3>{{restaurant.location.address}}</h3><br />
-    <p> <span class="font-weight-medium">Cuisines:</span>
-      {{restaurant.cuisines}}
+  <div v-if="restaurant">
+    <h2>{{ restaurant.name }}</h2>
+    <h3>{{ restaurant.location.address }}</h3>
+    <br />
+    <p>
+      <span class="font-weight-medium">Cuisines:</span>
+      {{ restaurant.cuisines }}
     </p>
-    <p> <span class="font-weight-medium">Average cost for two customers:</span>
-      {{restaurant.average_cost_for_two}}
-      {{restaurant.currency}}
+    <p>
+      <span class="font-weight-medium">Average cost for two customers:</span>
+      {{ restaurant.average_cost_for_two }}
+      {{ restaurant.currency }}
     </p>
-    <p><span class="font-weight-medium">Rating:</span>
-       {{restaurant.user_rating.aggregate_rating}}, {{restaurant.user_rating.rating_text}}
-       <span  class="text--secondary">({{restaurant.all_reviews_count}} ratings)</span>
+    <p>
+      <span class="font-weight-medium">Rating:</span>
+      {{ restaurant.user_rating.aggregate_rating }},
+      {{ restaurant.user_rating.rating_text }}
+      <span class="text--secondary"
+        >({{ restaurant.all_reviews_count }} ratings)</span
+      >
     </p>
     <p v-if="restaurant.has_online_delivery === 0">
       No online delivery
@@ -29,48 +36,48 @@
       <h4>Linki</h4>
       <ul>
         <li>
-          <a :href="restaurant.url">{{restaurant.name}}</a><br/>
-          <a :href="restaurant.photos_url">Photos</a><br/>
-          <a :href="restaurant.menu_url">Menu</a><br/>
-          <a :href="restaurant.events_url">Events</a><br/>
+          <a :href="restaurant.url">{{ restaurant.name }}</a
+          ><br />
+          <a :href="restaurant.photos_url">Photos</a><br />
+          <a :href="restaurant.menu_url">Menu</a><br />
+          <a :href="restaurant.events_url">Events</a><br />
         </li>
       </ul>
-    </div><br/>
-  <v-btn @click="goBack" color="brown darken-1" dark>
-    go back
-  </v-btn>
-
+    </div>
+    <br />
+    <v-btn @click="goBack" color="brown darken-1" dark>
+      go back
+    </v-btn>
   </div>
 </template>
 
 <script>
-
-import {
-  mapGetters,
-  mapActions
-} from 'vuex'
+import { mapGetters, mapActions } from "vuex";
 
 export default {
   name: "RestaurantDetails",
+  mounted() {
+    this.fetchRestaurants();
+  },
   methods: {
     goBack() {
-      return this.$router.go(-1)
+      return this.$router.go(-1);
     },
-    ...mapActions(['fetchRestaurants'])
+    ...mapActions(["fetchRestaurants"])
   },
   computed: {
-    ...mapGetters(['restaurantsByID']),
-    restaurant () {return this.restaurantsByID.get(this.$route.params.id)}
+    ...mapGetters(["restaurantsByID"]),
+    restaurant() {
+      return this.restaurantsByID.get(this.$route.params.id);
+    }
   }
-}
-
-
+};
 </script>
 <style scoped>
-  ul {
-    list-style-type:none;
-  }
-   a {
-     text-decoration: none;
-   }
+ul {
+  list-style-type: none;
+}
+a {
+  text-decoration: none;
+}
 </style>

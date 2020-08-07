@@ -6,7 +6,7 @@ import vuetify from "./plugins/vuetify";
 import axios from "axios";
 import VueAxios from "vue-axios";
 
-Vue.use(VueAxios, axios)
+Vue.use(VueAxios, axios);
 
 axios.defaults.baseURL = "https://developers.zomato.com/api/v2.1";
 axios.defaults.headers.common["user-key"] = process.env.VUE_APP_API_KEY;

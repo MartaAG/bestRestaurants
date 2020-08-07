@@ -1,19 +1,16 @@
 <template>
   <div class="about">
     <RestaurantDetails />
-    </div>
+  </div>
 </template>
 
 <script>
-
 import RestaurantDetails from "@/components/RestaurantDetails";
 
 export default {
-  name: 'About',
+  name: "About",
   components: {
     RestaurantDetails
   }
-}
-
-
+};
 </script>
