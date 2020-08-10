@@ -16,7 +16,7 @@
           </v-container>
         </v-main>
         <v-footer color="brown darken-4" app dark>
-          <span>2020</span>
+          <span class="white--text">&copy; {{ new Date().getFullYear() }}</span>
         </v-footer>
       </v-app>
     </v-app>
