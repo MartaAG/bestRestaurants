@@ -8,7 +8,10 @@
         v-for="location in allRestaurants"
         :key="location.restaurant.id"
       >
-        <v-img v-if="location.restaurant.featured_image" height="250" :src="location.restaurant.featured_image"></v-img>
+        <v-img
+          height="250"
+          :src="location.restaurant.featured_image"
+        ></v-img>
 
         <v-card-title>{{ location.restaurant.name }} </v-card-title>
         <v-card-text>
