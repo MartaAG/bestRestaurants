@@ -45,7 +45,7 @@
       </ul>
     </div>
     <br />
-    <v-btn @click="goBack" color="brown darken-1" dark>
+    <v-btn to="/" color="brown darken-1" dark>
       go back
     </v-btn>
   </div>
@@ -60,9 +60,6 @@ export default {
     this.fetchRestaurants();
   },
   methods: {
-    goBack() {
-      return this.$router.go(-1);
-    },
     ...mapActions(["fetchRestaurants"])
   },
   computed: {
