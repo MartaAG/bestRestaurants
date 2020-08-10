@@ -30,7 +30,7 @@ export default new Vuex.Store({
           }
         })
         .catch(error => {
-          console.log(error);
+          alert(error.message);
         });
 
       commit("setRestaurants", response.data.restaurants);
