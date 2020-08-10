@@ -8,17 +8,7 @@
         v-for="location in allRestaurants"
         :key="location.restaurant.id"
       >
-        <v-img
-          v-if="location.restaurant.featured_image != ''"
-          height="250"
-          :src="location.restaurant.featured_image"
-        ></v-img>
-
-        <v-img
-          v-else
-          height="250"
-          src="https://cdn.vuetifyjs.com/images/cards/cooking.png"
-        ></v-img>
+        <v-img v-if="location.restaurant.featured_image" height="250" :src="location.restaurant.featured_image"></v-img>
 
         <v-card-title>{{ location.restaurant.name }} </v-card-title>
         <v-card-text>
@@ -65,12 +55,11 @@ export default {
   methods: {
     ...mapActions(["fetchRestaurants"])
   },
-  computed: mapGetters(["allRestaurants"]),
+  computed: {
+    ...mapGetters(["allRestaurants"])
+  },
   created() {
     this.fetchRestaurants();
-  },
-  fetchPhoto: function() {
-    //
   }
 };
 </script>

@@ -9,7 +9,13 @@ export default new Vuex.Store({
     restaurants: []
   },
   mutations: {
-    setRestaurants: (state, restaurants) => (state.restaurants = restaurants)
+    setRestaurants: (state, restaurants) => {
+      //check if featured_image exists, if no change it to placeholder.
+      for (var location of restaurants) {
+        location.restaurant.featured_image = location.restaurant.featured_image ? location.restaurant.featured_image : "https://cdn.vuetifyjs.com/images/cards/cooking.png"
+      }
+      state.restaurants = restaurants
+    }
   },
   actions: {
     async fetchRestaurants({ commit }) {
