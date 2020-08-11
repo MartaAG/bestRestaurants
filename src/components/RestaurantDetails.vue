@@ -1,7 +1,7 @@
 <template>
   <div v-if="restaurant">
     <h2>{{ restaurant.name }}</h2>
-    <h3>{{ restaurant.location.address }}</h3>
+    <!-- <h3>{{ restaurant.location.address }}</h3> -->
     <br />
     <p>
       <span class="font-weight-medium">Cuisines:</span>
@@ -12,14 +12,14 @@
       {{ restaurant.average_cost_for_two }}
       {{ restaurant.currency }}
     </p>
-    <p>
+    <!-- <p>
       <span class="font-weight-medium">Rating:</span>
       {{ restaurant.user_rating.aggregate_rating }},
       {{ restaurant.user_rating.rating_text }}
       <span class="text--secondary"
         >({{ restaurant.all_reviews_count }} ratings)</span
       >
-    </p>
+    </p> -->
     <p v-if="restaurant.has_online_delivery === 0">
       No online delivery
     </p>
@@ -56,16 +56,13 @@ import { mapGetters, mapActions } from "vuex";
 
 export default {
   name: "RestaurantDetails",
-  mounted() {
-    this.fetchRestaurants();
-  },
   methods: {
-    ...mapActions(["fetchRestaurants"])
+    ...mapActions(['this.fetchRestaurantById(this.$route.params.id)'])
   },
   computed: {
-    ...mapGetters(["restaurantsByID"]),
+    ...mapGetters(["resByID"]),
     restaurant() {
-      return this.restaurantsByID.get(this.$route.params.id);
+      return this.resByID;
     }
   }
 };
