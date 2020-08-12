@@ -1,7 +1,9 @@
 <template>
   <div v-if="restaurant">
+    <div :style="`background-color:${restaurant.user_rating.rating_obj.bg_color.type}`">
     <h2>{{ restaurant.name }}</h2>
-    <!-- <h3>{{ restaurant.location.address }}</h3> -->
+    <h3>{{ restaurant.location.address }}</h3>
+    </div>
     <br />
     <p>
       <span class="font-weight-medium">Cuisines:</span>
@@ -12,14 +14,14 @@
       {{ restaurant.average_cost_for_two }}
       {{ restaurant.currency }}
     </p>
-    <!-- <p>
+    <p>
       <span class="font-weight-medium">Rating:</span>
       {{ restaurant.user_rating.aggregate_rating }},
       {{ restaurant.user_rating.rating_text }}
       <span class="text--secondary"
         >({{ restaurant.all_reviews_count }} ratings)</span
       >
-    </p> -->
+    </p>
     <p v-if="restaurant.has_online_delivery === 0">
       No online delivery
     </p>
@@ -34,7 +36,7 @@
     </p>
     <div>
       <h4>Linki</h4>
-      <ul>
+      <ul :style="`color:${restaurant.user_rating.rating_obj.bg_color.type}`">
         <li>
           <a :href="restaurant.url">{{ restaurant.name }}</a
           ><br />
@@ -56,8 +58,11 @@ import { mapGetters, mapActions } from "vuex";
 
 export default {
   name: "RestaurantDetails",
+  mounted() {
+    this.fetchRestaurantById(this.$route.params.id)
+  },
   methods: {
-    ...mapActions(["this.fetchRestaurantById(this.$route.params.id)"])
+    ...mapActions(["fetchRestaurantById"])
   },
   computed: {
     ...mapGetters(["resByID"]),
