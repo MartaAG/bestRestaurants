@@ -21,19 +21,19 @@ export default new Vuex.Store({
   },
   actions: {
     async fetchRestaurants({ commit }) {
-      const response = await axios
-        .get("/search", {
+      try {
+        const response = await axios.get("/search", {
           params: {
             entity_id: 263,
             entity_type: "city",
             sort: "rating"
           }
-        })
-        .catch(error => {
-          alert(error.message);
         });
 
-      commit("setRestaurants", response.data.restaurants);
+        commit("setRestaurants", response.data.restaurants);
+      } catch (error) {
+        console.log(error.message);
+      }
     }
   },
   getters: {

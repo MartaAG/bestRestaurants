@@ -12,29 +12,18 @@ axios.defaults.baseURL = "https://developers.zomato.com/api/v2.1";
 axios.defaults.headers.common["user-key"] = process.env.VUE_APP_API_KEY;
 
 //interceptors
-axios.interceptors.request.use(
-  config => {
-    if (process.env.VUE_APP_API_KEY) {
-      console.info("✉️ ", config);
-    }
-    return config;
-  },
-  error => {
-    if (process.env.VUE_APP_API_KEY) {
-      console.error("✉️ ", error);
-    }
-    return Promise.reject(error);
-  }
-);
 
 axios.interceptors.response.use(
   response => {
     if (response.status === 403) {
-      alert("please use your API key to run the app");
+      console.log(response);
     }
     return response;
   },
   error => {
+    if (error.response.status === 403) {
+      alert("please use your API key to run the app");
+    }
     if (error.response && error.response.data) {
       return Promise.reject(error.response.data);
     }
