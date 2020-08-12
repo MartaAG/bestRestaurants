@@ -57,7 +57,7 @@ import { mapGetters, mapActions } from "vuex";
 export default {
   name: "RestaurantDetails",
   methods: {
-    ...mapActions(['this.fetchRestaurantById(this.$route.params.id)'])
+    ...mapActions(["this.fetchRestaurantById(this.$route.params.id)"])
   },
   computed: {
     ...mapGetters(["resByID"]),

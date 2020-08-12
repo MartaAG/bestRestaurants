@@ -2,7 +2,6 @@ import Vue from "vue";
 import Vuex from "vuex";
 import axios from "axios";
 
-
 Vue.use(Vuex);
 
 export default new Vuex.Store({
@@ -22,7 +21,7 @@ export default new Vuex.Store({
     },
     //get restaurant by ID
     getOneRestaurant: (state, restaurantByID) =>
-      state.restaurantByID = restaurantByID
+      (state.restaurantByID = restaurantByID)
   },
   actions: {
     //get list of restaurants
@@ -54,7 +53,7 @@ export default new Vuex.Store({
         .catch(error => {
           console.log(error);
         });
-        console.log("answer:" + response.data)
+      console.log("answer:" + response.data);
       commit("getOneRestaurant", response.data);
     }
   },
