@@ -36,7 +36,8 @@
       <h4>Linki</h4>
       <ul>
         <li>
-          <a :href="restaurant.url">{{ restaurant.name }}</a><br />
+          <a :href="restaurant.url">{{ restaurant.name }}</a
+          ><br />
           <a :href="restaurant.photos_url">Photos</a><br />
           <a :href="restaurant.menu_url">Menu</a><br />
           <a :href="restaurant.events_url">Events</a><br />
