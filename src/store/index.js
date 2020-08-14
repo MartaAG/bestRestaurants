@@ -35,39 +35,32 @@ export default new Vuex.Store({
           }
         });
 
-      commit("setRestaurants", response.data.restaurants);
-    } catch (error) {
-      console.log(error.message);
-    }
-  },
+        commit("setRestaurants", response.data.restaurants);
+      } catch (error) {
+        console.log(error.message);
+      }
+    },
 
     //get one restaurant by ID
     async fetchRestaurantById({ commit }, ID) {
-      const response = await axios
-        .get("/restaurant", {
+      try {
+        const response = await axios.get("/restaurant", {
           params: {
             res_id: ID
-            //this.$route.params.id
           }
-        })
-        .catch(error => {
-          console.log(error);
         });
-      console.log("answer:" + response.data);
-      commit("getOneRestaurant", response.data);
+
+        commit("getOneRestaurant", response.data);
+      } catch (error) {
+        console.log(error.message);
+      }
     }
   },
   getters: {
     //populate with list of restaurants
     allRestaurants: state => state.restaurants,
+    //get one restaurant by id
     resByID: state => state.restaurantByID
-    // restaurantsByID: state => {
-    //   let restaurantsByID = new Map();
-    //   for (const location of state.restaurants) {
-    //     restaurantsByID.set(location.restaurant.id, location.restaurant);
-    //   }
-    //   return restaurantsByID;
-    // }
   },
   modules: {}
 });
