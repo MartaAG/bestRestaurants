@@ -11,30 +11,23 @@ Vue.use(VueAxios, axios);
 axios.defaults.baseURL = "https://developers.zomato.com/api/v2.1";
 axios.defaults.headers.common["user-key"] = process.env.VUE_APP_API_KEY;
 
-//interceptors
-axios.interceptors.request.use(
-  config => {
-    if (process.env.VUE_APP_API_KEY) {
-      console.info("✉️ ", config);
-    }
-    return config;
-  },
-  error => {
-    if (process.env.VUE_APP_API_KEY) {
-      console.error("✉️ ", error);
-    }
-    return Promise.reject(error);
-  }
-);
-
 axios.interceptors.response.use(
   response => {
-    if (response.status === 403) {
-      alert("please use your API key to run the app");
+    if (process.env.VUE_APP_API_KEY) {
+      console.log(response.status);
     }
     return response;
   },
   error => {
+    if (!process.env.VUE_APP_API_KEY) {
+      alert(
+        "Please make a file named '.env.local'. Create a global variable VUE_APP_API_KEY and initialize it with your own key in this file. " +
+          error
+      );
+    }
+    if (process.env.VUE_APP_API_KEY && error.response.status === 403) {
+      alert("Your key expired or is invalid  " + error);
+    }
     if (error.response && error.response.data) {
       return Promise.reject(error.response.data);
     }
