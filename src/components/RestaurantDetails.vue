@@ -1,6 +1,6 @@
 <template>
   <div v-if="restaurant">
-    <div :style="`background-color:${restaurant.user_rating.rating_obj.bg_color.type}`">
+    <div>
     <h2>{{ restaurant.name }}</h2>
     <h3>{{ restaurant.location.address }}</h3>
     </div>
@@ -36,10 +36,9 @@
     </p>
     <div>
       <h4>Linki</h4>
-      <ul :style="`color:${restaurant.user_rating.rating_obj.bg_color.type}`">
+      <ul>
         <li>
-          <a :href="restaurant.url">{{ restaurant.name }}</a
-          ><br />
+          <a :href="restaurant.url">{{ restaurant.name }}</a><br />
           <a :href="restaurant.photos_url">Photos</a><br />
           <a :href="restaurant.menu_url">Menu</a><br />
           <a :href="restaurant.events_url">Events</a><br />
