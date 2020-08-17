@@ -29,6 +29,10 @@ axios.interceptors.response.use(
       console.log(error)
       alert("Your key expired or is invalid. Please visit https://developers.zomato.com/api#headline2 and request a new API key");
     }
+    if (process.env.VUE_APP_API_KEY && error.response.status === 404) {
+      console.log(error)
+      alert("page you requested does not exist");
+    }
     if (error.response && error.response.data) {
       return Promise.reject(error.response.data);
     }
