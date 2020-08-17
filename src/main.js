@@ -20,9 +20,9 @@ axios.interceptors.response.use(
   },
   error => {
     if (!process.env.VUE_APP_API_KEY) {
+      console.log(error)
       alert(
-        "Please make a file named '.env.local'. Create a global variable VUE_APP_API_KEY and initialize it with your own key in this file. " +
-          error
+        "Your API key is absent. To run the app, please make a file named  '.env.local'. Then write in it VUE_APP_API_KEY=<your API KEY>. Save it. Run in console npm run serve. For more information, read readme file."
       );
     }
     if (process.env.VUE_APP_API_KEY && error.response.status === 403) {
