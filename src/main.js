@@ -5,7 +5,6 @@ import store from "./store";
 import vuetify from "./plugins/vuetify";
 import axios from "axios";
 import VueAxios from "vue-axios";
-
 Vue.use(VueAxios, axios);
 
 axios.defaults.baseURL = "https://developers.zomato.com/api/v2.1";
@@ -20,18 +19,25 @@ axios.interceptors.response.use(
   },
   error => {
     if (!process.env.VUE_APP_API_KEY) {
-      console.log(error)
-      alert(
-        "Your API key is absent. To run the app, please make a file named  '.env.local'. Then write in it VUE_APP_API_KEY=<your API KEY>. Save it. Run in console npm run serve. For more information, read readme file."
-      );
+      console.log(error);
+      router.replace({
+        name: "Error",
+        params: { id: 1 }
+      });
     }
     if (process.env.VUE_APP_API_KEY && error.response.status === 403) {
-      console.log(error)
-      alert("Your key expired or is invalid. Please visit https://developers.zomato.com/api#headline2 and request a new API key");
+      console.log(error);
+      router.replace({
+        name: "Error",
+        params: { id: error.response.status }
+      });
     }
     if (process.env.VUE_APP_API_KEY && error.response.status === 404) {
-      console.log(error)
-      alert("page you requested does not exist");
+      console.log(error);
+      router.replace({
+        name: "Error",
+        params: { id: error.response.status }
+      });
     }
     if (error.response && error.response.data) {
       return Promise.reject(error.response.data);
