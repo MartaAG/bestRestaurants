@@ -63,10 +63,10 @@ import { mapGetters, mapActions } from "vuex";
 export default {
   name: "RestaurantDetails",
   mounted() {
-    this.fetchRestaurantById(this.$route.params.id);
+    this.fetchRestaurantFromCache(this.$route.params.id);
   },
   methods: {
-    ...mapActions(["fetchRestaurantById"])
+    ...mapActions(["fetchRestaurantFromCache"])
   },
   computed: {
     ...mapGetters(["resByID"]),
