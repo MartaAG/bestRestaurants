@@ -7,8 +7,7 @@ Vue.use(Vuex);
 export default new Vuex.Store({
   state: {
     restaurants: [],
-    currentRestaurant: [],
-    cachedRestaurantsByID: new Map()
+    restaurantByID: []
   },
   mutations: {
     setRestaurants: (state, restaurants) => {
@@ -21,12 +20,8 @@ export default new Vuex.Store({
       state.restaurants = restaurants;
     },
     //get restaurant by ID
-    setRestaurant: (state, restaurant) =>
-      (state.currentRestaurant = restaurant),
-
-    addToCache: (state, restaurant) => {
-      state.cachedRestaurantsByID.set(restaurant.id, restaurant);
-    }
+    getOneRestaurant: (state, restaurantByID) =>
+      (state.restaurantByID = restaurantByID)
   },
   actions: {
     //get list of restaurants
@@ -39,28 +34,25 @@ export default new Vuex.Store({
             sort: "rating"
           }
         });
+
         commit("setRestaurants", response.data.restaurants);
       } catch (error) {
         console.log(error.message);
       }
     },
 
-    // get restaurant from cache or fetch it if not available
-    async fetchRestaurantFromCache({ commit, state }, ID) {
-      if (state.cachedRestaurantsByID.has(ID)) {
-        commit("setRestaurant", state.cachedRestaurantsByID.get(ID));
-      } else {
-        try {
-          const response = await axios.get("/restaurant", {
-            params: {
-              res_id: ID
-            }
-          });
-          commit("setRestaurant", response.data);
-          commit("addToCache", response.data);
-        } catch (error) {
-          console.log(error.message);
-        }
+    //get one restaurant by ID
+    async fetchRestaurantById({ commit }, ID) {
+      try {
+        const response = await axios.get("/restaurant", {
+          params: {
+            res_id: ID
+          }
+        });
+
+        commit("getOneRestaurant", response.data);
+      } catch (error) {
+        console.log(error.message);
       }
     }
   },
@@ -68,7 +60,7 @@ export default new Vuex.Store({
     //populate with list of restaurants
     allRestaurants: state => state.restaurants,
     //get one restaurant by id
-    resByID: state => state.currentRestaurant
+    resByID: state => state.restaurantByID
   },
   modules: {}
 });

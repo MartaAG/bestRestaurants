@@ -63,10 +63,28 @@ import { mapGetters, mapActions } from "vuex";
 export default {
   name: "RestaurantDetails",
   mounted() {
-    this.fetchRestaurantFromCache(this.$route.params.id);
+       this.fetchRestaurantById(this.$route.params.id);
+    //if user saw this route earlier, load saved restaurants
+    //  this.$router.push(localStorage.getItem('paragraphId'))
+    console.log(localStorage.getItem('visitedRestaurant'))
+    if(localStorage.getItem('visitedRestaurant')) {
+       this.$router.push(localStorage.getItem('visitedRestaurant'))
+    }
+
+  },
+  watch: {
+    //watch if currect restaurant is loaded
+    //if new restaurant is loaded, save the new restaurant to local storage
+    //localStorage.setItem('visitedRestaurant', this.$route.params.id);
+    //else: don't save to local storage
+      $route(to, from) {
+        if(to.path !== from.path && this.$route.params.id) {
+          localStorage.setItem('visitedRestaurant', this.$route.params.id)
+        }
+      }
   },
   methods: {
-    ...mapActions(["fetchRestaurantFromCache"])
+    ...mapActions(["fetchRestaurantById"])
   },
   computed: {
     ...mapGetters(["resByID"]),
