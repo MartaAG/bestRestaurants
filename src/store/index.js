@@ -25,9 +25,8 @@ export default new Vuex.Store({
       (state.currentRestaurant = restaurant),
 
     addToCache: (state, restaurant) => {
-      state.cachedRestaurantsByID.set(restaurant.id, restaurant)
+      state.cachedRestaurantsByID.set(restaurant.id, restaurant);
     }
-
   },
   actions: {
     //get list of restaurants
@@ -48,7 +47,7 @@ export default new Vuex.Store({
 
     // get restaurant from cache or fetch it if not available
     async fetchRestaurantFromCache({ commit, state }, ID) {
-      if (state.cachedRestaurantsByID.has(ID)){
+      if (state.cachedRestaurantsByID.has(ID)) {
         commit("setRestaurant", state.cachedRestaurantsByID.get(ID));
       } else {
         try {
@@ -58,12 +57,12 @@ export default new Vuex.Store({
             }
           });
           commit("setRestaurant", response.data);
-          commit("addToCache", response.data)
+          commit("addToCache", response.data);
         } catch (error) {
           console.log(error.message);
         }
       }
-    },
+    }
   },
   getters: {
     //populate with list of restaurants
