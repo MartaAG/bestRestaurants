@@ -25,7 +25,7 @@ export default new Vuex.Store({
       (state.currentRestaurant = restaurant),
 
     addToCache: (state, restaurant) => {
-      state.cachedRestaurantsByID.set(restaurant.restaurant.id, restaurant)
+      state.cachedRestaurantsByID.set(restaurant.id, restaurant)
     }
 
   },
