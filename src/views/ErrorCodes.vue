@@ -1,17 +1,15 @@
 <template>
-  <div>
     <v-alert type="error" color="pink darken-4">
       <v-row align="center">
         <v-col class="grow">{{ this.errorMessage }}</v-col>
         <v-col class="shrink"> </v-col>
       </v-row>
     </v-alert>
-  </div>
 </template>
 
 <script>
 export default {
-  name: "DisplayError",
+  name: "ErrorCodes",
   computed: {
     errorMessage: function() {
       let message = "";

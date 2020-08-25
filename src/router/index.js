@@ -1,7 +1,7 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
 import Home from "../views/Home.vue";
-import DisplayError from "../views/DisplayError.vue";
+import ErrorCodes from "../views/ErrorCodes.vue";
 
 Vue.use(VueRouter);
 
@@ -23,7 +23,7 @@ const routes = [
   {
     path: "/error/:id",
     name: "Error",
-    component: DisplayError
+    component: ErrorCodes
   }
 ];
 
