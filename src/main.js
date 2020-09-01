@@ -18,11 +18,12 @@ axios.interceptors.response.use(
     return response;
   },
   error => {
+    const noKeyError = "noKey";
     if (!process.env.VUE_APP_API_KEY) {
       console.log(error);
       router.replace({
         name: "Error",
-        params: { id: 1 }
+        params: { id: noKeyError }
       });
     }
     if (process.env.VUE_APP_API_KEY && error.response.status === 403) {
