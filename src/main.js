@@ -18,31 +18,23 @@ axios.interceptors.response.use(
     return response;
   },
   error => {
-    const noKeyError = "noKey";
+    const HTTPErrors = [403, 404];
+    let errorID;
     if (!process.env.VUE_APP_API_KEY) {
-      console.log(error);
-      router.replace({
-        name: "Error",
-        params: { id: noKeyError }
-      });
+      errorID = "noKey";
+    } else if (HTTPErrors.includes(error.response.status)) {
+      errorID = error.response.status;
     }
-    if (process.env.VUE_APP_API_KEY && error.response.status === 403) {
-      console.log(error);
-      router.replace({
-        name: "Error",
-        params: { id: error.response.status }
-      });
-    }
-    if (process.env.VUE_APP_API_KEY && error.response.status === 404) {
-      console.log(error);
-      router.replace({
-        name: "Error",
-        params: { id: error.response.status }
-      });
-    }
+    console.log(error);
+    router.replace({
+      name: "Error",
+      params: { id: errorID }
+    });
+
     if (error.response && error.response.data) {
       return Promise.reject(error.response.data);
     }
+
     return Promise.reject(error.message);
   }
 );
