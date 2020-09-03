@@ -23,7 +23,7 @@ axios.interceptors.response.use(
     if (!process.env.VUE_APP_API_KEY) {
       errorID = "noKey";
     } else if (HTTPErrors.includes(error.response.status)) {
-      errorID = error.response.status;
+      errorID = error.response.status.toString();
     }
     console.log(error);
     router.replace({
