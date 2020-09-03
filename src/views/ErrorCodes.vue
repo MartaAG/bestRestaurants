@@ -4,7 +4,9 @@
       <v-col class="grow">
         <div v-html="errorMessage"></div>
       </v-col>
-      <v-col class="shrink"> </v-col>
+      <v-col class="shrink" v-if="this.$route.params.id==='404'">
+        <v-btn v-on:click="$router.go(-2)">Go back</v-btn>
+      </v-col>
     </v-row>
   </v-alert>
 </template>
@@ -27,10 +29,12 @@ export default {
             </p>`;
           break;
         case "404":
-          message = "Page you requested does not exist";
+          message = `<p>
+          Page you requested does not exist.
+          </p>`;
           break;
         default:
-          message = "Unknown error";
+          message = `Unknown error.`;
       }
       return message;
     }
