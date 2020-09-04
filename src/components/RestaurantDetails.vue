@@ -1,7 +1,11 @@
 <template>
   <div v-if="restaurant">
-    <h2>{{ restaurant.name }}</h2>
-    <h3>{{ restaurant.location.address }}</h3>
+    <v-sheet color="amber" elavation="10" width="500" heigth="200">
+      <h2>{{ restaurant.name }}</h2>
+      <h3>{{ restaurant.location.address }}</h3>
+      <p>Hours: {{ restaurant.timings }}</p>
+      <p>Phone: {{ restaurant.phone_numbers }}</p>
+    </v-sheet>
     <br />
     <p>
       <span class="font-weight-medium">Cuisines:</span>
@@ -13,11 +17,13 @@
       {{ restaurant.currency }}
     </p>
     <p>
-      <span class="font-weight-medium">Rating:</span>
-      {{ restaurant.user_rating.aggregate_rating }},
-      {{ restaurant.user_rating.rating_text }}
-      <span class="text--secondary"
-        >({{ restaurant.all_reviews_count }} ratings)</span
+      <span class="font-weight-medium">Rating: </span>
+      <span :style="`color=#${restaurant.user_rating.rating_color}`"
+        >{{ restaurant.user_rating.aggregate_rating }},
+        {{ restaurant.user_rating.rating_text }}</span
+      >
+      <span class="text--secondary">
+        ({{ restaurant.all_reviews_count }} ratings)</span
       >
     </p>
     <p v-if="restaurant.has_online_delivery === 0">
@@ -33,7 +39,7 @@
       There is table booking
     </p>
     <div>
-      <h4>Linki</h4>
+      <h4>Links</h4>
       <ul>
         <li>
           <a :href="restaurant.url">{{ restaurant.name }}</a
@@ -53,19 +59,18 @@
 
 <script>
 import { mapGetters, mapActions } from "vuex";
-
 export default {
   name: "RestaurantDetails",
   mounted() {
-    this.fetchRestaurants();
+    this.fetchRestaurantById(this.$route.params.id);
   },
   methods: {
-    ...mapActions(["fetchRestaurants"])
+    ...mapActions(["fetchRestaurantById"])
   },
   computed: {
-    ...mapGetters(["restaurantsByID"]),
+    ...mapGetters(["resByID"]),
     restaurant() {
-      return this.restaurantsByID.get(this.$route.params.id);
+      return this.resByID;
     }
   }
 };
