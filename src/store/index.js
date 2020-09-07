@@ -20,7 +20,7 @@ export default new Vuex.Store({
       state.restaurants = restaurants;
     },
     //get restaurant by ID
-    getOneRestaurant: (state, restaurantByID) =>
+    setCurrentRestaurant: (state, restaurantByID) =>
       (state.restaurantByID = restaurantByID)
   },
   actions: {
@@ -50,7 +50,7 @@ export default new Vuex.Store({
           }
         });
 
-        commit("getOneRestaurant", response.data);
+        commit("setCurrentRestaurant", response.data);
       } catch (error) {
         console.log(error.message);
       }

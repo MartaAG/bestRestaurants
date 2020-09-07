@@ -4,7 +4,7 @@
       <v-col class="grow">
         <div v-html="errorMessage"></div>
       </v-col>
-      <v-col class="shrink" v-if="this.$route.params.id==='404'">
+      <v-col class="shrink" v-if="this.$route.params.id === '404'">
         <v-btn v-on:click="$router.go(-2)">Go back</v-btn>
       </v-col>
     </v-row>
