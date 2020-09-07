@@ -1,11 +1,18 @@
 <template>
   <div v-if="restaurant">
-    <v-sheet color="amber" elavation="10" width="500" heigth="200">
-      <h2>{{ restaurant.name }}</h2>
-      <h3>{{ restaurant.location.address }}</h3>
+    <v-row>
+      <v-col lg="4">
+
+    <v-card  class="mx-auto"
+    max-width="500"
+    elevation="15">
+      <v-card-text>
+      <h2 class="display-1 text--primary">{{ restaurant.name }}</h2>
+      <h3 class="text--primary">{{ restaurant.location.address }}</h3>
       <p>Hours: {{ restaurant.timings }}</p>
       <p>Phone: {{ restaurant.phone_numbers }}</p>
-    </v-sheet>
+      </v-card-text>
+    </v-card>
     <br />
     <p>
       <span class="font-weight-medium">Cuisines:</span>
@@ -18,7 +25,7 @@
     </p>
     <p>
       <span class="font-weight-medium">Rating: </span>
-      <span :style="`color=#${restaurant.user_rating.rating_color}`"
+      <span
         >{{ restaurant.user_rating.aggregate_rating }},
         {{ restaurant.user_rating.rating_text }}</span
       >
@@ -54,6 +61,8 @@
     <v-btn to="/" color="brown darken-1" dark>
       go back
     </v-btn>
+      </v-col>
+    </v-row>
   </div>
 </template>
 

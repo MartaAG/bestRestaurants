@@ -1,7 +1,7 @@
 <template>
   <div>
     <h1>best restaurants from Wroclaw, dzień dobry!</h1>
-    <v-row align="center" justify="center" class="grey lighten-5">
+    <v-row align="center" justify="center" class="grey lighten-5" fluid>
       <v-card
         class="mx-auto my-12"
         max-width="320"
