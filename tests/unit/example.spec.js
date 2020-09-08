@@ -1,7 +1,6 @@
+import Vue from 'vue'
 import Vuetify from 'vuetify'
-
 import App from "@/App.vue";
-
 import { mount, createLocalVue } from "@vue/test-utils";
 
 
