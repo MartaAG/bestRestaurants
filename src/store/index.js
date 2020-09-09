@@ -67,8 +67,8 @@ export default new Vuex.Store({
   getters: {
     //populate with list of restaurants
     allRestaurants: state => state.restaurants,
-    //get one restaurant by id
-    resByID: state => state.currentRestaurant
+    //get one restaurant
+    getOneRestaurant: state => state.currentRestaurant
   },
   modules: {}
 });

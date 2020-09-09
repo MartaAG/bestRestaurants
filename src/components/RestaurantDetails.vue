@@ -76,9 +76,9 @@ export default {
     ...mapActions(["fetchRestaurantFromCache"])
   },
   computed: {
-    ...mapGetters(["resByID"]),
+    ...mapGetters(["getOneRestaurant"]),
     restaurant() {
-      return this.resByID;
+      return this.getOneRestaurant;
     }
   }
 };
