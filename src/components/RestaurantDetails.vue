@@ -24,10 +24,10 @@
         </p>
         <p>
           <span class="font-weight-medium">Rating: </span>
-          <span
-            >{{ restaurant.user_rating.aggregate_rating }},
-            {{ restaurant.user_rating.rating_text }}</span
-          >
+          <span>
+            {{ restaurant.user_rating.aggregate_rating }},
+            {{ restaurant.user_rating.rating_text }}
+          </span>
           <span class="text--secondary">
             ({{ restaurant.all_reviews_count }} ratings)</span
           >
