@@ -16,7 +16,6 @@ export default {
   name: "ErrorCodes",
   computed: {
     errorMessage: function() {
-      //let message = "";
       switch (this.$route.params.id) {
         case "noKey":
           return `<p>
