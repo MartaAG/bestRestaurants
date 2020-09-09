@@ -16,9 +16,9 @@
           {{ restaurant.cuisines }}
         </p>
         <p>
-          <span class="font-weight-medium"
-            >Average cost for two customers:</span
-          >
+          <span class="font-weight-medium">
+            Average cost for two customers:
+          </span>
           {{ restaurant.average_cost_for_two }}
           {{ restaurant.currency }}
         </p>
