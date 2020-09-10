@@ -2,13 +2,32 @@
   <div v-if="restaurant">
     <v-row>
       <v-col lg="4">
-        <v-card class="mx-auto" max-width="500" elevation="15">
+        <v-card dark class="mx-auto pink darken-4" max-width="500" elevation="15">
           <v-card-text>
-            <p class="display-1 text--primary font-weight-medium">{{ restaurant.name }}</p>
-            <p class="text--primary">{{ restaurant.location.address }}</p>
+            <p class="display-1 text--primary
+            font-weight-medium
+            pink--text text--lighten-5">
+              {{ restaurant.name }}
+            </p>
 
-            <p>Hours: {{ restaurant.timings }}</p>
-            <p>Phone: {{ restaurant.phone_numbers }}</p>
+            <p class="font-weight-bold
+            pink--text text--lighten-5
+            text-subtitle-1">
+              {{ restaurant.location.address }}
+            </p>
+
+            <p class="pink--text text--lighten-5
+            text-subtitle-1">
+              <span class="font-weight-medium">Hours:</span>
+              {{ restaurant.timings }}
+            </p>
+
+            <p class="pink--text text--lighten-5
+            text-subtitle-1">
+              <span class="font-weight-medium">Phone:</span>
+              {{ restaurant.phone_numbers }}
+            </p>
+
           </v-card-text>
         </v-card>
         <br />
@@ -30,8 +49,8 @@
             {{ restaurant.user_rating.rating_text }}
           </span>
           <span class="text--secondary">
-            ({{ restaurant.all_reviews_count }} ratings)</span
-          >
+            ({{ restaurant.all_reviews_count }} ratings)
+          </span>
         </p>
         <p v-if="restaurant.has_online_delivery === 0">
           No online delivery
