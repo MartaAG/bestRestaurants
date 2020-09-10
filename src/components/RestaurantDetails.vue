@@ -2,32 +2,41 @@
   <div v-if="restaurant">
     <v-row>
       <v-col lg="4">
-        <v-card dark class="mx-auto pink darken-4" max-width="500" elevation="15">
+        <v-card
+          dark
+          class="mx-auto pink darken-4"
+          max-width="500"
+          elevation="15">
           <v-card-text>
-            <p class="display-1 text--primary
-            font-weight-medium
-            pink--text text--lighten-5">
+            <p
+              class="display-1 text--primary
+              font-weight-medium
+              pink--text text--lighten-5">
               {{ restaurant.name }}
             </p>
 
-            <p class="font-weight-bold
-            pink--text text--lighten-5
-            text-subtitle-1">
+            <p
+              class="font-weight-bold
+              pink--text text--lighten-5
+              text-subtitle-1">
               {{ restaurant.location.address }}
             </p>
 
-            <p class="pink--text text--lighten-5
-            text-subtitle-1">
+            <p
+              class="pink--text text--lighten-5
+              text-subtitle-1">
+
               <span class="font-weight-medium">Hours:</span>
               {{ restaurant.timings }}
             </p>
 
-            <p class="pink--text text--lighten-5
-            text-subtitle-1">
+            <p
+              class="pink--text text--lighten-5
+              text-subtitle-1">
+
               <span class="font-weight-medium">Phone:</span>
               {{ restaurant.phone_numbers }}
             </p>
-
           </v-card-text>
         </v-card>
         <br />
@@ -69,13 +78,13 @@
           <ul>
             <li>
               <a :href="restaurant.url">{{ restaurant.name }}</a>
-                <br />
+              <br />
               <a :href="restaurant.photos_url">Photos</a>
-                <br />
+              <br />
               <a :href="restaurant.menu_url">Menu</a>
-                <br />
+              <br />
               <a :href="restaurant.events_url">Events</a>
-                <br />
+              <br />
             </li>
           </ul>
         </div>
