@@ -4,8 +4,9 @@
       <v-col lg="4">
         <v-card class="mx-auto" max-width="500" elevation="15">
           <v-card-text>
-            <h2 class="display-1 text--primary">{{ restaurant.name }}</h2>
-            <h3 class="text--primary">{{ restaurant.location.address }}</h3>
+            <p class="display-1 text--primary font-weight-medium">{{ restaurant.name }}</p>
+            <p class="text--primary">{{ restaurant.location.address }}</p>
+
             <p>Hours: {{ restaurant.timings }}</p>
             <p>Phone: {{ restaurant.phone_numbers }}</p>
           </v-card-text>
@@ -48,11 +49,14 @@
           <h4>Links</h4>
           <ul>
             <li>
-              <a :href="restaurant.url">{{ restaurant.name }}</a
-              ><br />
-              <a :href="restaurant.photos_url">Photos</a><br />
-              <a :href="restaurant.menu_url">Menu</a><br />
-              <a :href="restaurant.events_url">Events</a><br />
+              <a :href="restaurant.url">{{ restaurant.name }}</a>
+                <br />
+              <a :href="restaurant.photos_url">Photos</a>
+                <br />
+              <a :href="restaurant.menu_url">Menu</a>
+                <br />
+              <a :href="restaurant.events_url">Events</a>
+                <br />
             </li>
           </ul>
         </div>
