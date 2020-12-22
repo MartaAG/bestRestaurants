@@ -7,6 +7,9 @@
       <v-col class="shrink" v-if="this.$route.params.id === '404'">
         <v-btn v-on:click="$router.go(-1)">Go back</v-btn>
       </v-col>
+      <v-col class="shrink" v-else>
+        <v-btn to="/">Try again</v-btn>
+      </v-col>
     </v-row>
   </v-alert>
 </template>
