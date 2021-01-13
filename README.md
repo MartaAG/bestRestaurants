@@ -1,5 +1,7 @@
 # best-restaurants
-Shows 20 restaurants with best ratings from Wroclaw
+Shows 20 restaurants with best ratings from Wroclaw.
+The application bases on the rating from Zomato.
+To run the app, request your own key on [Zomato](https://developers.zomato.com/api#headline2)
 
 ## Project setup
 ```
